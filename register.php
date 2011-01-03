@@ -28,7 +28,8 @@ function base64_url_decode($input) {
 }
 $url = get_bloginfo('wpurl') . '/wp-login.php';
 if ($_REQUEST) {
-	$response = parse_signed_request($_REQUEST['signed_request'], get_option('facebook_registration_app_secret'));
+	$options = get_option('fbregister_options');
+	$response = parse_signed_request($_REQUEST['signed_request'], $options['app_secret']); 
 	$user_login = $response['registration']['username'];
 	$user_email = $response['registration']['email'];
 	$url .= '?action=register';
