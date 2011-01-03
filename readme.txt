@@ -40,3 +40,9 @@ No, but an update is in the works to incorporate functionality into multsite ins
 = 0.2 =
 * Various error checking and control added for increased user experience
 * &lt;fb:registration> now replaces &lt;form> instead of inside it
+
+== Upgrade Notice ==
+
+= 0.2 =
+Adds various UI/UX elements, including confirming Facebook App ID and Secret
+are correct.
