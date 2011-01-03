@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:	Facebook Registration Tool 
-Version:	0.1
+Version:	0.2
 Author:		iEntry, Inc.
 Author URI:	http://www.beyondwp.com
 License: 	GPLv2
