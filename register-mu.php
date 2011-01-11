@@ -26,13 +26,13 @@ function parse_signed_request($signed_request, $secret) {
 function base64_url_decode($input) {
 	return base64_decode(strtr($input, '-_', '+/'));
 }
-$url = get_bloginfo('wpurl') . '/wp-login.php';
+$url = get_bloginfo('wpurl') . '/wp-signup.php';
 if ($_REQUEST) {
 	$options = get_option('fbregister_options');
 	$response = parse_signed_request($_REQUEST['signed_request'], $options['app_secret']); 
 	$user_login = $response['registration']['username'];
 	$user_email = $response['registration']['email'];
-	$url .= '?action=register';
+	$signup_for = isset($response['registration']['signup_for']) ? $response['registration']['signup_for'] : 'user';
 } else {
 	header("location: $url");
 }
@@ -51,8 +51,13 @@ if ($_REQUEST) {
 <input type="submit" value="Submit" />
 </div>
 </noscript>
-<input type="hidden" name="user_login" value="<?=$user_login?>" />
+<input type="hidden" name="user_name" value="<?=$user_login?>" />
 <input type="hidden" name="user_email" value="<?=$user_email?>" />
+<!-- nonce stuff? -->
+<?php do_action( "signup_hidden_fields" ); ?>
+<!-- end nonce stuff -->
+<input type="hidden" name="signup_for" value="<?= $signup_for ?>" /> 
+<input type="hidden" name="stage" value="validate-user-signup" />
 </form>
 <script type="text/javascript">
 <!--
