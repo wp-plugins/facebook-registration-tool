@@ -46,6 +46,9 @@ Yes! As of version 0.3, this plugin works with multisite!
 
 == Upgrade Notice ==
 
+= 0.3 =
+Multisite/network now supported.
+
 = 0.2 =
 Adds various UI/UX elements, including confirming Facebook App ID and Secret
 are correct.
