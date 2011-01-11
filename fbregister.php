@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:	Facebook Registration Tool 
-Version:	0.2
+Version:	0.3
 Author:		iEntry, Inc.
 Author URI:	http://www.beyondwp.com
 License: 	GPLv2
@@ -132,11 +132,15 @@ if (!class_exists('fbregister')) {
 		function init() {
 			$options = get_option('fbregister_options');
 			if ($this->test_settings() && $this->test_fb_connection()) {
-				add_action('login_head', array(&$this, 'login_head'));
-				add_action('register_form', array(&$this, 'register_form'));
-				wp_enqueue_script('fbreg', plugins_url('js/fbreg.js.php', __FILE__), array('jquery'));
-				wp_enqueue_style('fbreg_css', plugins_url('css/fbreg.css', __FILE__));
 				wp_enqueue_script('fbSDK', 'http://connect.facebook.net/en_US/all.js');
+				wp_enqueue_script('fbreg', plugins_url('js/fbreg.js.php', __FILE__), array('jquery'));
+				if (defined('MULTISITE') && MULTISITE) {
+					// do special things for multisite?
+				} else {
+					add_action('login_head', array(&$this, 'login_head'));
+					add_action('register_form', array(&$this, 'register_form'));
+					wp_enqueue_style('fbreg_css', plugins_url('css/fbreg.css', __FILE__));
+				}
 			}
 		}
 
@@ -144,12 +148,6 @@ if (!class_exists('fbregister')) {
 			global $wp_scripts;
 			$wp_scripts->print_scripts();
 			wp_print_styles();
-		}
-		
-		function register_form() { 
-			$options = get_option('fbregister_options');
-		?>
-		<?php
 		}
 	}
 }

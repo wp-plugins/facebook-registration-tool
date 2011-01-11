@@ -3,7 +3,7 @@ Contributors: mikemarr
 Tags: facebook, registration, facebook registration tool
 Requires at least: 3.0
 Tested up to: 3.0.4
-Stable tag: 0.2
+Stable tag: 0.3
 
 Integrates Facebook Registration Tool into Wordpress registration/user system.
 
@@ -33,9 +33,12 @@ this plugin. See: http://beyondwp.com/2010/12/23/whats-the-big-facebook-app-secr
 
 = Does this work with multisite? =
 
-No, but an update is in the works to incorporate functionality into multsite installs.
+Yes! As of version 0.3, this plugin works with multisite!
 
 == Changelog ==
+
+= 0.3 =
+* Added multisite (network) support
 
 = 0.2 =
 * Various error checking and control added for increased user experience
